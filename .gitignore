@@ -1,0 +1,11 @@
+*.aux
+*.vscode
+*.bbl
+*.toc
+*.log
+*.out
+*.gz
+*.synctex
+*.blg
+*.synctex(busy)
+list.txt
