@@ -1,0 +1,65 @@
+\newpage
+\chapter{数列极限}
+\section{实数系的连续性}
+\subsection{实数系}
+\begin{formal}
+    \begin{definition}[数集的封闭性的定义]\label{def:数集的封闭性的定义}
+        设$S$为一个数集,若$\forall a,b\in S,a$和$b$进行某种运算后的结果仍在$S$中,则称$S$对这种运算是封闭的.
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{definition}[可公度的定义]\label{def:可公度的定义}
+        设两条线段长度为$a,b$,则必定存在一条长度为$c$的线段使得$c\mid a,c\mid b$,则称$a,b$可公度.
+    \end{definition}
+\end{formal}
+\begin{red}
+\begin{remark}
+    整数集$\mathbb{Z}$具有离散性,有理数集$\mathbb{Q}$具有稠密性（但存在“空隙”）,实数集$\mathbb{R}$具有连续性,故$\mathbb{R}$又称为实数连续统.
+\end{remark}
+\end{red}
+\subsection{最大数与最小数}
+\begin{formal}
+    \begin{definition}[最大最小数的定义]\label{def:最大最小数的定义}
+        设$S\subset\mathbb{R},$若$\exists\xi\in S$使得$\forall x\in S,x\leqslant\xi$,则称$\xi$为$S$的最大数；若$\exists\eta\in S$使得$\forall x\in S,x\geqslant\eta$,则称$\eta$为$S$的最小数.
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{theorem}[最大最小数的存在性]\label{thm:最大最小数的存在性}
+        设$S\subset\mathbb{R},$若$S$是非空有限集,则\cref{def:最大最小数的定义}中的最大数$\xi$与最小数$\eta$必定存在.若$S$为无限集,则最大数与最小数不一定存在.
+    \end{theorem}
+\end{formal}
+\subsection{上确界与下确界}
+\begin{formal}
+    \begin{definition}[上界与下界的定义]\label{def:上界与下界的定义}
+        设$\varnothing\neq S\subset\mathbb{R}$,若$\exists M\in\mathbb{R}$使得$\forall x\in S,x\leqslant M,$则称$M$为$S$的上界；若$\exists m \in\mathbb{R}$使得$\forall x\in S,x\geqslant m,$则称$m$为$S$的下界.
+        
+        当$S$既有上界又有下界时,称$S$有界.
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{definition}[有界的等价定义]\label{def:有界的等价定义}
+        根据\cref{def:上界与下界的定义},$S$有界当且仅当$\exists M>0$使得$\forall x\in S,|x|\leqslant M$.
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{definition}[上确界与下确界的定义]\label{def:上确界与下确界的定义}
+        设$\varnothing\neq S\subset\mathbb{R}$,在\cref{def:上界与下界的定义}基础上,$U$为全体上界组成的集合,显然$U$无最大数,但$U$有最小数$\beta$,称为$S$的上确界,记为$\beta=\sup S$；$L$为全体下界组成的集合,显然$L$无最小数,但$L$有最大数$\alpha$,称为$S$的下确界,记为$\alpha=\inf S$.
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{theorem}[上确界与下确界的性质]\label{thm:上确界与下确界的性质}
+        \cref{def:上确界与下确界的定义}中的上确界$\beta=\sup S$满足：\begin{enumerate}[label={\textup{(\arabic*)}}]
+            \item $\beta$是$S$的上界：$\forall x\in S,x\leqslant\beta$；
+            \item $\beta$是$S$的最小上界：$\forall\varepsilon>0,\exists x\in S$使得$\beta-\varepsilon<x\leqslant\beta$；
+        \end{enumerate}
+        \cref{def:上确界与下确界的定义}中的下确界$\alpha=\inf S$满足：\begin{enumerate}[label={\textup{(\arabic*)}}]
+            \item $\alpha$是$S$的下界：$\forall x\in S,x\geqslant\alpha$；
+            \item $\alpha$是$S$的最大下界：$\forall\varepsilon>0,\exists x\in S$使得$\alpha\leqslant x<\alpha+\varepsilon$.
+        \end{enumerate}
+    \end{theorem}
+\end{formal}
+\begin{formal}
+    \begin{theorem}[确界存在定理/实数系连续性定理]\label{thm:确界存在定理/实数系连续性定理}
+        非空有上界的实数集必有上确界,非空有下界的实数集必有下确界.
+    \end{theorem}
+\end{formal}
