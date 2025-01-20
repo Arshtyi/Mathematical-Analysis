@@ -62,4 +62,401 @@
     \begin{theorem}[确界存在定理/实数系连续性定理]\label{thm:确界存在定理/实数系连续性定理}
         非空有上界的实数集必有上确界,非空有下界的实数集必有下确界.
     \end{theorem}
+    \begin{Proof}
+        $\forall x\in\mathbb{R},x=\left[\,x\,\right]+\left\{x\right\},$其中\[
+        \left\{x\right\}=0.a_1a_2a_3\cdots a_n\cdots
+        \]注意到$0.a_1a_2\cdots a_p000\cdots=0.a_1a_2\cdots \left(a_p-1\right)999\cdots\left(a_p\neq 0\right),$因此避开使用后者.于是任一实数有这样的唯一表示方法\[
+        S=\left\{
+            a_0+0.a_1a_2\cdots a_n\cdots\mid a_0=\left[\,x\,\right],0.a_1a_2\cdots a_n\cdots=\left\{x\right\},x\in S
+        \right\}
+        \]设$S$有上界,取$S$中$a_0$的最大者$\alpha_0$并记\[
+        S_0=\left\{
+            x\in S\mid \left[\,x\,\right]=\alpha_0
+        \right\}\Longrightarrow\forall x\in S,x\notin S_0,x<\alpha_0
+        \]再取$S_0$中$a_1$的最大者为$\alpha_1$,作\[
+        S_1=\left\{
+            x\in S\mid a_1=\alpha_1
+        \right\}\Longrightarrow\forall x\in S,x\notin S_1,x<\alpha_1+0.\alpha_1
+        \]一般地,考虑$S_{n-1}$中$a_n$的最大者为$\alpha_n$,记\[
+        S_n=\left\{
+            x\in S_{n-1}\mid a_n=\alpha_n
+        \right\}\Longrightarrow\forall x\in S,x\notin S_n,x<\alpha_n+0.\alpha_1\alpha_2\cdots\alpha_n
+        \]于是得到一系列的非空数集$
+        S\supset S_0\supset S_1\supset\cdots\supset S_n\supset\cdots
+        $和一系列数字\[
+        \alpha_0\in\mathbb{Z},\alpha_1,\alpha_2,\cdots,\alpha_n,\cdots\in\left\{
+            0,1,2,3,4,5,6,7,8,9
+        \right\}
+        \]作$\beta=\alpha_0+0.\alpha_1\alpha_2\cdots\alpha_n\cdots$.这样完成了构造,下证$\beta$确实是$S$的上确界.
+
+        一方面,$\forall x\in S,$则要么$\exists n_0\in\mathbb{N},x\notin S_{n_0},$要么$\forall n\in\mathbb{N},x\in S_n.$第一种情况下\[
+        x<\alpha_0+0.\alpha_1\alpha_2\cdots\alpha_{n_0}\leqslant \beta
+        \]第二种情况下$x=\beta$,于是$\forall x\in S,x\leqslant \beta$即$\beta$是$S$的上界.
+
+        另一方面,$\forall \varepsilon >0,$取$n_0\mathbb{N}$使得$\displaystyle \frac{
+            1
+        }{10^{n_0}}<\varepsilon.$取$x_0\in S_{n_0}$则$x_0$与$\beta$的整数部分及前$n_0$位小数相同,于是\[
+        \beta-x_0\leqslant\frac{1}{10^{n_0}}<\varepsilon
+        \]即$\forall \varepsilon>0,\exists x_0>\beta-\varepsilon$即$\beta-\varepsilon$不是$S$的上界,故$\beta$是$S$的上确界.
+
+        同理,对于$S$有下界的情况,可证$S$有下确界.
+    \end{Proof}
 \end{formal}
+\begin{red}
+    \begin{remark}
+        上述证明中,$\beta$的表示可能与约定相悖即\[
+        \left\{\beta\right\}=0.\alpha_1\alpha_2\cdots999\cdots
+        \]不过这并不影响,只要关心存在性即可.
+    \end{remark}
+\end{red}
+\begin{formal}
+    \begin{theorem}[确界的唯一性]\label{thm:确界的唯一性}
+        非空有界数集的上确界与下确界是唯一的.
+    \end{theorem}
+    \begin{Proof}
+        设$\sup S$等于$A$和$B$且$A<B$.取$\displaystyle \varepsilon=\frac{B-A}{2}>0$,考虑$B$即$\exists x\in S$是的$x>B-\varepsilon>A$,这与$A$是$S$的上确界矛盾.同理可证下确界的唯一性.
+    \end{Proof}
+\end{formal}
+\begin{brown}
+    \begin{example}
+        证明$\displaystyle T=\left\{
+            x\mid x\in\mathbb{Q},x>0,x^2<2
+        \right\}$在$\mathbb{Q}$内无上确界.
+    \end{example}
+    \begin{Proof}
+        考虑反证法,设上界$\displaystyle \sup T=\frac{n}{m}\left(m,n\in\mathbb{N}^+,\gcd{m}{n}=1\right)$,注意到$1.4^2<2<1.5^2$于是\[
+        1<\left(
+            \frac{n}{m}
+        \right)^2<3
+        \]并且$\sqrt{2}\notin \mathbb{Q}.$
+        
+        于是一方面$\displaystyle 1<\left(\frac{n}{m}\right)^2<2$,我们尝试寻找一个$r>0$使得$\displaystyle \frac{n}{m}+r\in T.$记$\displaystyle 2-\frac{n^2}{m^2}=t\in\left(0,1\right)$,作$\displaystyle r=\frac{n}{6m}t,$显然$\displaystyle 0<\frac{n}{m}+r\in\mathbb{Q}.$因为$\displaystyle r^2=\frac{n^2t^2}{36m^2}<\frac{t}{18}$并且$\displaystyle \frac{2nr}{m}=\frac{n^2t}{3m^2}<\frac{2t}{3}$于是\[
+        \left(
+            \frac{n}{m}+r
+        \right)-2=r^2+2\frac{nr}{m}-t<\frac{t}{18}+\frac{2t}{3}-t<0\Longrightarrow
+        \frac{n}{m}<\frac{n}{m}+r\in T\Longrightarrow \frac{n}{m}\neq\sup T
+        \]
+
+        另一方面$\displaystyle 2<\left(\frac{n}{m}\right)^2<3$,我们尝试寻找一个$r>0$使得$\displaystyle \frac{n}{m}-r\in T.$记$\displaystyle \frac{n^2}{m^2}-2=t\in\left(0,1\right)$,作$\displaystyle r=\frac{n}{6m}t,$显然$\displaystyle 0<\frac{n}{m}-r\in\mathbb{Q}.$因为$\displaystyle \frac{2nr}{m}=\frac{n^2t}{3m^2}<t$于是\[
+        \left(
+            \frac{n}{m}-r
+        \right)^2-2=r^2+2\frac{nr}{m}-t>0\Longrightarrow
+        \frac{n}{m}-r\in T\Longrightarrow \frac{n}{m}\neq\sup T
+        \]综上所述,$\displaystyle T$在$\mathbb{Q}$内无上确界.
+    \end{Proof}
+\end{brown}
+\newpage
+\section{数列极限}
+\subsection{数列与数列极限}
+\begin{formal}
+    \begin{definition}[数列的定义]\label{def:数列的定义}
+        数列是一串按照正整数编了号的数\[
+        \left\{x_n\right\}:x_1,x_2,x_3,\cdots,x_n,\cdots
+        \]其中$x_n$称为该数列的通项.
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{definition}[数列极限的定义]\label{def:数列极限的定义}
+        设数列$\left\{x_n\right\}$,$a$为一个实常数.若$\forall \varepsilon >0,\exists N\in\mathbb{N}^+$使得$n>N$时\[
+        \left|
+            x_n-a
+        \right|<\varepsilon
+        \]恒成立,则称$a$为数列$\left\{x_n\right\}$的极限（数列$\left\{x_n\right\}$收敛于$a$）,记作\[
+        \lim_{n\to\infty}x_n=a\text{或}x_n\to a\left(n\to\infty\right)
+        \]若不存在这样的常数$a$,则称数列$\left\{x_n\right\}$发散.
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{definition}[邻域的概念]\label{def:邻域的概念}
+        平面直角坐标系中$x$轴上以$x_0$为中心,以$\delta>0$为半径的开区间$\left(
+            x_0-\delta,x_0+\delta
+        \right)$称为$x_0$的$\delta$邻域,记作\[
+        U\left(x_0,\delta\right)=\left(
+            x_0-\delta,x_0+\delta
+        \right)
+        \]特别地,去掉$x_0$的$\delta$邻域称为$x_0$的$\delta$去心邻域,记作\[
+        \mathring{U}\left(x_0,\delta\right)=\left(
+            x_0-\delta,x_0\right)\cup\left(
+                x_0,x_0+\delta
+            \right)
+        \]
+    \end{definition}
+\end{formal}
+\begin{red}
+    \begin{remark}
+        数列的收敛与否、收敛到何处与它的前有限项无关.
+    \end{remark}
+\end{red}
+\begin{brown}
+    \begin{example}
+        证明$\displaystyle \left\{
+            \frac{n}{n+3}
+        \right\}$收敛于$1$.
+    \end{example}
+    \begin{Proof}
+        即\[
+        \left|
+            \frac{n}{n+3}-1
+        \right|<\varepsilon\Longrightarrow n>\frac{3}{\varepsilon}-3
+        \]取$N=\left\lceil\displaystyle\frac{3}{\varepsilon} \right\rceil -3$即可.
+    \end{Proof}
+\end{brown}
+\begin{formal}
+    \begin{definition}[无穷小量的定义]\label{def:无穷小量的定义}
+        极限为$0$的数列称为无穷小量.
+    \end{definition}
+\end{formal}
+\begin{red}
+    \begin{remark}
+        无穷小量是变量而不是一个非常小的量.特别地,数列\[
+        0,0,0,\cdots,0,\cdots
+        \]是一个特殊的无穷小量.
+    \end{remark}
+\end{red}
+\begin{green}
+\begin{corollary}[无穷小量的推出]\label{cor:无穷小量的推出}
+    根据\cref{def:数列极限的定义}可以构造出$\left\{
+        x_n-a
+    \right\}$这样一个无穷小量.
+\end{corollary}
+\end{green}
+\begin{brown}
+    \begin{example}
+        $\left\{q^n\right\}\left(0<\left|q\right|<1\right)$是无穷小量.
+    \end{example}
+\end{brown}
+\begin{brown}
+    \begin{example}
+        证明：$\displaystyle \lim_{n\to\infty}\sqrt[n]{n}=1.$
+    \end{example}
+    \begin{Proof}
+        令$\displaystyle \sqrt[n]{n}=1+y_n$则\[
+        n=\left(1+y_n\right)^n=1+ny_n+\frac{n\left(n-1\right)}{2}y_n^2+\cdots+y_n^n>1+\frac{n\left(n-1\right)}{2}y_n^2
+        \]即\[
+        \left|\sqrt[n]{n}-1\right|=\left|y_n\right|<\sqrt{\frac{2}{n}}
+        \]于是对于$\forall \varepsilon>0,$取$N=\left\lceil\displaystyle\frac{2}{\varepsilon^2}\right\rceil$即可.
+    \end{Proof}
+    事实上\[
+    \lim_{n\to\infty}\sqrt[n]{x}=1
+    \]其中$x$可以是任意正实数,也可以是$n$的$n>k\in\mathbb{N}^+$次幂.
+\end{brown}
+\begin{brown}
+    \begin{example}
+        证明：若$\displaystyle \lim_{n\to\infty}a_n=a$,则\[
+        \lim_{n\to\infty}\frac{a_1+a_2+\cdots+a_n}{n}=a
+        \]
+    \end{example}
+    \begin{Proof}
+        先假设$a=0$,于是$\forall \varepsilon>0,\exists N_1$使得$n>N_1$时\[
+        \left|a_n\right|<\frac{\varepsilon}{2}
+        \]于是\begin{align*}
+            \left|\frac{
+            a_1+a_2+\cdots+a_n
+            }{n}\right|&\leqslant\left|\frac{
+                a_1+a_2+\cdots+a_{N_1}
+            }{n}\right|+\left|\frac{
+                a_{N_1+1}+\cdots+a_n
+            }{n}\right|\\
+            &<\left|
+                \frac{
+                    a_1+a_2+\cdots+a_{N_1}
+                }{n}
+            \right|+\frac{\varepsilon}{2}
+        \end{align*}此时再取定$N>N_1$使得$n>N$时\[
+        \left|
+            \frac{
+                a_1+a_2+\cdots+a_{N_1}
+            }{n}
+        \right|<\frac{\varepsilon}{2}
+        \]于是\[
+        \left|
+            \frac{
+                a_1+a_2+\cdots+a_n
+            }{n}
+        \right|<\varepsilon
+        \]
+
+        $a\neq 0$时,根据\cref{cor:无穷小量的推出}知\[
+        \lim_{n\to\infty}\frac{a_1+a_2+\cdots+a_n}{n}-a=\lim_{n\to\infty}\frac{\left(a_1-a\right)+\left(a_2-a\right)+\cdots+\left(a_n-a\right)}{n}=0
+        \]即\[
+        \lim_{n\to\infty}\frac{a_1+a_2+\cdots+a_n}{n}=a\qedhere
+        \]
+    \end{Proof}
+\end{brown}
+\subsection{数列极限的性质}
+\begin{formal}
+    \begin{definition}[数列极限的等价表述]\label{def:数列极限的等价表述}
+        数列$\left\{x_n\right\}$极限为$a$的等价表述为\[
+        \forall \varepsilon>0,\exists N,\forall n>N:\left|x_n-a\right|<\varepsilon
+        \]
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{theorem}[极限唯一]\label{thm:极限唯一}
+        收敛数列的极限唯一.
+    \end{theorem}
+    \begin{Proof}
+        设$\left\{x_n\right\}$的极限为$a$和$b$,则有\cref{def:数列极限的等价表述}知\[
+        \forall \varepsilon>0,\exists N_1,\forall n>N_1:\left|x_n-a\right|<\frac{\varepsilon}{2};\forall \varepsilon>0,\exists N_2,\forall n>N_2:\left|x_n-b\right|<\frac{\varepsilon}{2}
+        \]取$N=\max\,\left\{N_1,N_2\right\}$则$\forall n>N$:\[
+        \left|a-b\right|=\left|
+            a-x_n+x_n-b
+        \right|\leqslant \left|
+            x_n-a
+        \right|+\left|
+            x_n-b
+        \right|<\varepsilon\to 0
+        \]于是$a=b.$
+    \end{Proof}
+\end{formal}
+\begin{formal}
+    \begin{definition}[有界数列的定义]\label{def:有界数列的定义}
+        对于数列$\left\{x_n\right\}$,若存在$M\in\mathbb{R}$使得\[
+        x_n\leqslant M,\forall n\in\mathbb{N}^+
+        \]则称$M$为数列$\left\{x_n\right\}$的一个上界.若存在$m\in\mathbb{R}$使得\[
+        x_n\geqslant m,\forall n\in\mathbb{N}^+
+        \]则称$m$为数列$\left\{x_n\right\}$的一个下界.若上界与下界均存在,则称数列$\left\{x_n\right\}$有界.
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{definition}[有界数列的等价定义]\label{def:有界数列的等价定义}
+        \cref{def:有界数列的定义}等价于：存在$0<X\in\mathbb{R}$使得\[
+        \left|x_n\right|\leqslant X,\forall n\in\mathbb{N}^+
+        \]
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{theorem}[收敛与有界]\label{thm:收敛与有界}
+        收敛数列必定有界,有界数列不一定收敛.
+    \end{theorem}
+    \begin{Proof}
+        设数列$\left\{x_n\right\}$收敛于$a$,取定$\varepsilon=1$则$\exists N,\forall n>N:\left|x_n-a\right|<1$则\[
+        a-1<x_n<a+1
+        \]取$M=\max\,\left\{x_1,x_2,\cdots,x_N,a+1\right\},m=\min\,\left\{
+            x_1,x_2,\cdots,x_N,a-1
+        \right\}$即可.
+
+        $\left\{
+            \left(-1\right)^n
+        \right\}$显然有界但不收敛.
+    \end{Proof}
+\end{formal}
+\begin{formal}
+    \begin{theorem}[数列的保序性]\label{thm:数列的保序性}
+        设$\left\{x_n\right\}$收敛于$a$,$\left\{y_n\right\}$收敛于$b$且$a<b$,则$\exists N\in\mathbb{N}^+$使得$n>N$时\[
+        x_n<y_n
+        \]
+    \end{theorem}
+    \begin{Proof}
+        取$\displaystyle \varepsilon=\frac{b-a}{2}$于是\[
+        \exists N_1,\forall n>N_1:\left|x_n-a\right|<\frac{b-a}{2}\Longrightarrow x_n<a+\frac{b-a}{2}=\frac{a+b}{2}
+        \]同理\[
+        \exists N_2,\forall n>N_2:\left|y_n-b\right|<\frac{b-a}{2}\Longrightarrow y_n>b-\frac{b-a}{2}=\frac{a+b}{2}
+        \]于是取$N=\max\,\left\{N_1,N_2\right\}$即可.
+    \end{Proof}
+\end{formal}
+\begin{green}
+    \begin{corollary}[保序性推论]\label{cor:保序性推论}
+        由\cref{thm:数列的保序性}知\begin{enumerate}[label={\textup{(\arabic*)}}]
+            \item 若$\displaystyle \lim_{n\to\infty}y_n>0$,则$\exists N$使得$n>N$时\[
+            y_n>\frac{b}{2}>0
+            \]
+            \item 若$\displaystyle \lim_{n\to\infty}y_n<0$,则$\exists N$使得$n>N$时\[
+             y_n<\frac{b}{2}<0
+             \]
+        \end{enumerate}
+    \end{corollary}
+\end{green}
+\begin{red}
+    \begin{remark}
+        \cref{cor:保序性推论}说明当$\left\{x_n\right\}$极限不为$0$,$n$充分大时$x_n$不能充分接近$0$.
+    \end{remark}
+\end{red}
+\begin{red}
+    \begin{remark}
+        \cref{thm:数列的保序性}的逆命题并不成立如$\displaystyle \left\{\frac{1}{n}\right\}$和$\displaystyle \left\{\frac{2}{n}\right\}$.事实上,只能有\cref{cor:保序性逆命题改进}.
+    \end{remark}
+\end{red}
+\begin{green}
+    \begin{corollary}[保序性逆命题改进]\label{cor:保序性逆命题改进}
+        若$\displaystyle \lim_{n\to\infty}x_n=a,\lim_{n\to\infty}y_n=b$且$\exists N\in\mathbb{N}^+$使得$n>N$时$x_n\leqslant y_n$,则$a\leqslant b.$
+    \end{corollary}
+\end{green}
+\begin{formal}
+    \begin{criterion}[夹逼准则]\label{cri:夹逼准则}
+        设数列$\left\{x_n\right\},\left\{y_n\right\},\left\{z_n\right\}$从某一项开始有\[
+        x_n\leqslant y_n\leqslant z_n,n>N_0
+        \]且$\displaystyle \lim_{n\to\infty}x_n=\lim_{n\to\infty}z_n=a$则$\displaystyle\lim_{n\to\infty}y_n=a.$
+    \end{criterion}
+    \begin{Proof}
+        $\forall\varepsilon>0$,$\exists N_1,\forall n>N_1:\left|x_n-a\right|<\varepsilon\Longrightarrow a-\varepsilon<x_n$;$\exists N_2,\forall n>N_2:\left|z_n-a\right|<\varepsilon\Longrightarrow z_n<a+\varepsilon$.则取$N=\max\,\left\{N_0,N_1,N_2\right\},\forall n>N:$\[
+        a-\varepsilon<x_n\leqslant y_n\leqslant z_n<a+\varepsilon
+        \]即\[
+        \left|y_n-a\right|<\varepsilon\qedhere
+        \]
+    \end{Proof}
+\end{formal}
+\begin{brown}
+    \begin{example}
+        证明：\[
+        \lim_{n\to\infty}\left(
+            a_1^n+a_2^n+\cdots+a_p^n
+        \right)^{\frac{1}{n}}=\max_{1\leqslant i\leqslant p}\,\left\{a_i\right\}
+        \]其中$a_i\geqslant0\left(i=1,2,\cdots,p\right).$
+    \end{example}
+\end{brown}
+\subsection{数列极限的四则远算}
+\begin{formal}
+    \begin{theorem}[极限的四则运算]\label{thm:极限的四则运算}
+        设$\displaystyle \lim_{n\to\infty}x_n=a,\lim_{n\to\infty}y_n=b$,则\begin{enumerate}[label={\textup{(\arabic*)}}]
+            \item $\lim_{n\to\infty}\left(\alpha x_n+\beta y_n\right)=\alpha a+\beta b$（$\alpha,\beta$为常数）
+            \item $\displaystyle \lim_{n\to\infty}\left(x_ny_n\right)=ab$
+            \item $\displaystyle \lim_{n\to\infty}\left(
+                \frac{x_n}{y_n}
+            \right)=\frac{a}{b}\left(b\neq 0\right)$
+        \end{enumerate}
+    \end{theorem}
+    \begin{Proof}
+        首先$\exists X>0$使得$\forall n\in\mathbb{N}^+,\left|x_n\right|\leqslant X$且$\forall \varepsilon>0,\exists N_1,\forall n>N_1:\left|x_n-a\right|<\varepsilon ,\exists N_2,\forall n>N_2:\left|y_n-b\right|<\varepsilon$,则取$N=\max\,\left\{N_1,N_2\right\},\forall n>N:$\begin{align*}
+        \left|
+            \left(\alpha x_n+\beta y_n\right)-\left(\alpha a+\beta b\right)
+        \right|&=\left|
+            \alpha\left(x_n-a\right)+\beta\left(y_n-b\right)
+        \right|\\
+        &\leqslant \left|
+            \alpha\left(x_n-a\right)
+        \right|+\left|
+            \beta\left(y_n-b\right)
+        \right|\\
+        &\leqslant\left|\alpha\right|\left|x_n-a\right|+\left|\beta\right|\left|y_n-b\right|\\
+        &<\left(\left|\alpha\right|+\left|\beta\right|\right)\varepsilon
+        \end{align*}\begin{align*}
+            \left|x_ny_n-ab\right|&=\left|
+                x_n\left(y_n-b\right)+b\left(x_n-a\right)
+            \right|\\
+            &<\left|X+\left|b\right|\right|\varepsilon
+        \end{align*}
+        根据\cref{cor:保序性推论}知$\displaystyle \exists N_0,\forall n>N_0:\left|y_n\right|>\frac{\left|b\right|}{2},$取$N=\max\,\left\{
+            N_0,N_1,N_2
+        \right\},\forall n>N:$\begin{align*}
+        \left|
+            \frac{x_n}{y_n}-\frac{a}{b}
+        \right|&=\left|
+            \frac{b\left(x_n-a\right)-a\left(y_n-b\right)}{y_nb}
+        \right|\\
+        &<\frac{2\left(\left|a\right|+\left|b\right|\right)}{b^2}\varepsilon
+        \end{align*}
+    \end{Proof}
+\end{formal}
+\begin{green}
+    \begin{corollary}[开方运算]\label{cor:开方运算}
+        设$\displaystyle x_n\geqslant 0,\lim_{n\to\infty}x_n=a\geqslant 0\Longrightarrow\lim_{n\to\infty}\sqrt{x_n}=\sqrt{a}.$
+    \end{corollary}
+\end{green}
+\begin{red}
+    \begin{remark}
+        \cref{thm:极限的四则运算}只对有限个数列正确，对无穷个或不定数个不总成立.
+
+        事实上,涉及无穷的时候总要小心而慎重.
+    \end{remark}
+\end{red}
