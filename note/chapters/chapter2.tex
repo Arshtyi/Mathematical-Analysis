@@ -281,6 +281,8 @@
         \]即\[
         \lim_{n\to\infty}\frac{a_1+a_2+\cdots+a_n}{n}=a\qedhere
         \]
+
+        也可使用\cref{thm:Stolz定理}
     \end{Proof}
 \end{brown}
 \subsection{数列极限的性质}
@@ -460,3 +462,189 @@
         事实上,涉及无穷的时候总要小心而慎重.
     \end{remark}
 \end{red}
+\newpage
+\section{无穷大量}
+\subsection{无穷大量}
+\begin{formal}
+    \begin{definition}[无穷大量的定义]\label{def:无穷大量的定义}
+        若$\forall G>0,\exists N,n>N:$\[
+        \left|x_n\right|>G
+        \]则称数列$\left\{x_n\right\}$为无穷大量.记作\[
+        \lim_{n\to\infty}x_n=\infty
+        \]
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{definition}[定号无穷大量]\label{def:定号无穷大量}
+        若\cref{def:无穷大量的定义}中无穷大量从某一项开始均是正数,则称数列$\left\{x_n\right\}$为正无穷大量,记作\[
+        \lim_{n\to\infty}x_n=+\infty
+        \]若无穷大量从某一项开始均是负数,则称数列$\left\{x_n\right\}$为负无穷大量,记作\[
+        \lim_{n\to\infty}x_n=-\infty
+        \]二者统称为定号无穷大量,否则称为不定号无穷大量.
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{theorem}[无穷大与无穷小]\label{thm:无穷大与无穷小}
+        $\left\{x_n\right\}$是无穷大量当且仅当$\displaystyle \left\{\frac{1}{x_n}\right\}$是无穷小量.
+    \end{theorem}
+    \begin{Proof}
+        先证必要性,$\forall \varepsilon>0,$取$\displaystyle G=\frac{1}{\varepsilon}>0$则$\displaystyle\exists N,\forall n>N:\left|x_n\right|>G=\frac{1}{\varepsilon}$从而\[
+        \left|\frac{1}{x_n}\right|<\varepsilon
+        \]即$\displaystyle\left\{\frac{1}{x_n}\right\}$是无穷小量.
+
+        同理可证充分性.
+    \end{Proof}
+\end{formal}
+\begin{formal}
+    \begin{theorem}[无穷大量与非零量]\label{thm:无穷大量与非零量}
+        设$\left\{x_n\right\}$为无穷大量,若$n>N_0$时$\left|y_n\right|\geqslant\delta>0,$则$\left\{x_ny_n\right\}$为无穷大量.
+    \end{theorem}
+\end{formal}
+\begin{brown}
+    \begin{example}
+        $\displaystyle \left\{\frac{n}{\sin n}\right\}$为无穷大量因为\[
+        \left|
+            \frac{1}{\sin n}
+        \right|\geqslant 1
+        \]
+    \end{example}
+\end{brown}
+\begin{formal}
+    \begin{theorem}[无穷小量与有界量]\label{thm:无穷小量与有界量}
+        设$\left\{x_n\right\}$为无穷小量,$\left|y_n\right|\leqslant M$,则$\left\{x_ny_n\right\}$为无穷小量.
+    \end{theorem}
+\end{formal}
+\begin{formal}
+    \begin{theorem}[无穷大量与有界量]\label{thm:无穷大量与有界量}
+        设$\left\{x_n\right\}$为无穷大量,$\displaystyle\lim_{n\to\infty}y_n=b\neq 0$,则$\displaystyle\left\{x_ny_n\right\},\left\{\frac{x_n}{y_n}\right\}$都是无穷大量.
+    \end{theorem}
+\end{formal}
+\begin{brown}
+    \begin{example}
+        $\left\{n\arctan n\right\}$为无穷大量因为\[
+        \lim_{n\to\infty}\arctan n=\frac{\pi}{2}\neq 0
+        \]
+    \end{example}
+\end{brown}
+\begin{brown}
+    \begin{example}
+        设$k,l\in\mathbb{N}^+,a_0\neq 0,b_0\neq0$,则\[
+        \lim_{n\to\infty}\frac{
+            a_0n^k+a_1n^{k-1}+\cdots+a_{k-1}n+a_k
+        }{
+            b_0n^l+b_1n^{l-1}+\cdots+b_{l-1}n+b_l
+        }=\begin{cases*}
+            0&,$k<l$\\
+            \cfrac{a_0}{b_0}&,$k=l$\\
+            \infty&,$k>l$
+        \end{cases*}
+        \]
+    \end{example}
+\end{brown}
+\begin{formal}
+    \begin{proposition}[无穷大的运算]\label{prop:无穷大的运算}下面是关于无穷大量的运算
+
+        \begin{enumerate}[label={\textup{(\arabic*)}}]
+            \item $\left(+\infty\right)+\left(+\infty\right)=+\infty,\left(+\infty\right)-\left(-\infty\right)=+\infty$
+            \item $\infty\pm$有界量$=\infty$
+            \item $\left(+\infty\right)\cdot\left(+\infty\right)=+\infty,\left(+\infty\right)\cdot\left(-\infty\right)=-\infty,\left(-\infty\right)\cdot\left(-\infty\right)=+\infty$
+        \end{enumerate}
+    \end{proposition}
+\end{formal}
+\subsection{待定型}
+\begin{formal}
+    \begin{definition}[待定型的定义]\label{def:待定型的定义}
+        除\cref{prop:无穷大的运算}外\begin{enumerate}[label={\textup{(\arabic*)}}]
+            \item $\left(+\infty\right)-\left(+\infty\right)$
+            \item $\left(+\infty\right)+\left(-\infty\right)$
+            \item $\left(\infty\right)\pm\left(\infty\right)$
+            \item $0\cdot\infty$
+            \item $\displaystyle \frac{0}{0}$
+            \item $\displaystyle \frac{\infty}{\infty}$
+        \end{enumerate}都称为待定型.
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{definition}[数列单调性的定义]\label{def:数列单调性的定义}
+        若数列$\left\{x_n\right\}$满足：\begin{enumerate}[label={\textup{(\arabic*)}}]
+            \item \[
+            x_n\leqslant x_{n+1},n=1,2,3,\cdots
+            \]则称$\left\{x_n\right\}$为单调增加数列
+            \item \[
+            x_n<x_{n+1},n=1,2,3,\cdots
+            \]则称$\left\{x_n\right\}$为严格单调增加数列
+            \item \[
+            x_n\geqslant x_{n+1},n=1,2,3,\cdots
+            \]则称$\left\{x_n\right\}$为单调减少数列
+            \item \[
+            x_n>x_{n+1},n=1,2,3,\cdots
+            \]则称$\left\{x_n\right\}$为严格单调减少数列
+        \end{enumerate}
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{theorem}[Stolz定理]\label{thm:Stolz定理}
+        设$\left\{y_n\right\}$是严格单调增加的正无穷大量,且\[
+        \lim_{n\to\infty}   \frac{
+            x_n-x_{n-1}
+        }{y_n-y_{n-1}}=a\left(
+            -\infty\leqslant a\leqslant +\infty
+        \right)
+        \]则\[
+        \lim_{n\to\infty}\frac{x_n}{y_n}=a
+        \]
+    \end{theorem}
+    \begin{Proof}
+        设$a=0$即$\displaystyle \lim_{n\to\infty}\frac{
+            x_n-x_{n-1}
+        }{y_n-y_{n-1}}$则$\forall\varepsilon>0,\exists N_1,\forall n>N_1:$\[
+        \left|
+            \frac{
+                x_n-x_{n-1}
+            }{y_n-y_{n-1}}
+        \right|<\varepsilon\Longrightarrow \left|x_n-x_{n-1}\right|<\varepsilon\left(y_n-y_{n-1}\right)
+        \]于是$\left|x_n-x_{N_1}\right|\leqslant\varepsilon\left(y_n-y_{N_1}\right)$即\[
+        \left|
+            \frac{x_n}{y_n}-\frac{x_{N_1}}{y_n}
+        \right|\leqslant\varepsilon\left(1-\frac{y_{N_1}}{y_n}\right)<\varepsilon
+        \]于是\[
+        \left|
+            \frac{x_n}{y_n}
+        \right|<\varepsilon+\left|
+            \frac{x_{N_1}}{y_{n}}
+        \right|
+        \]现取$N>N_1$充分大使得$\forall n>N:\displaystyle \left|\frac{x_{N_1}}{y_n}\right|<\varepsilon$即\[
+        \left|\frac{x_n}{y_n}\right|<2\varepsilon\Longrightarrow \lim_{n\to\infty}\frac{x_n}{y_n}=0=a
+        \]
+
+        $a\neq0$时,考虑$x_n'=x_n-ay_n$显然\[
+        \lim_{n\to\infty}\frac{
+            x_n'-x_{n-1}'
+        }{
+            y_n-y_{n-1}
+        }=\lim_{n\to\infty}\left(
+            \frac{x_n-x_{n-1}}{y_n-y_{n-1}}-a
+        \right)=0
+        \]于是\[
+        \lim_{n\to\infty}\frac{x_n'}{y_n}=0\Longrightarrow \lim_{n\to\infty}\frac{x_n}{y_n}=a
+        \]
+
+        $a=+\infty$时即$\displaystyle \forall G>0,\exists N,\forall n>N:\frac{x_n-x_{n-1}}{y_n-y_{n-1}}>G$,取$G=1\Longrightarrow x_n-x_{n-1}>y_n-y_{n-1}>0\Longrightarrow\left\{x_n\right\}$严格单调递增且是正无穷大量,于是\[
+        \lim_{n\to\infty}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}=0\Longrightarrow \lim_{n\to\infty}\frac{y_n}{x_n}=0\Longrightarrow \lim_{n\to\infty}\frac{x_n}{y_n}=+\infty
+        \]
+
+        类似可证$a=-\infty$的情况.
+    \end{Proof}
+\end{formal}
+\begin{brown}
+    \begin{example}
+        $k\in\mathbb{N}^+$,则
+        \begin{align}
+            \lim_{n\to\infty}\frac{1^k+2^k+\cdots+n^k}{n^{k+1}}&=\lim_{n\to\infty}\frac{n^k}{n^{k+1}-\left(n-1\right)^{k+1}}\\
+            &=\lim_{n\to\infty}\frac{n^k}{
+                C^1_{k+1}n^{k}+C^2_{k+1}n^{k-1}+\cdots
+            }\\
+            &=\frac{1}{k+1}
+        \end{align}
+    \end{example}
+\end{brown}
