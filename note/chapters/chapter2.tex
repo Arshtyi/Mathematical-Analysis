@@ -648,3 +648,422 @@
         \end{align}
     \end{example}
 \end{brown}
+\begin{red}
+    \begin{remark}
+        \cref{thm:Stolz定理}不能由$\infty\Longrightarrow\infty$如$x_n=\left(-1\right)^nn,y_n=n$,也不能由不存在推得不存在如$x_n=1-2+3-4+\cdots+\left(-1\right)^{n-1}n,y_n=n^2.$
+    \end{remark}
+\end{red}
+\newpage
+\section{收敛准则}
+\begin{red}
+    \begin{remark}
+        考虑两个问题：\begin{enumerate}[label={\textup{(\arabic*)}}]
+            \item 有界数列加上什么样的条件能够保证其收敛？
+            \item 有界数列不加上任何条件能够给出什么样的结论？
+        \end{enumerate}
+    \end{remark}
+\end{red}
+\subsection{单调有界数列收敛定理}
+\begin{formal}
+    \begin{theorem}[单调收敛定理]\label{thm:单调收敛定理}
+        单调有界数列必定收敛.
+    \end{theorem}
+    \begin{Proof}
+        不妨设$\left\{x_n\right\}$单调递增且有上界,设$\beta=\sup\left\{x\mid x\in\left\{x_n\right\}\right\}$,由\cref{thm:上确界与下确界的性质}知$\forall \varepsilon>0:$\[
+        \left|
+            \beta-x_n
+        \right|<\varepsilon
+        \]于是可知$\displaystyle\lim_{n\to\infty}x_n=\beta$.
+    \end{Proof}
+\end{formal}
+\begin{red}
+    \begin{remark}
+        这是充分条件,不是必要条件即并非所有收敛数列都是单调数列.
+    \end{remark}
+\end{red}
+\begin{brown}
+    \begin{example}
+        设$\displaystyle x_1>0,x_{n+1}=1+\frac{x_n}{1+x_n},n=1,2,\cdots.$证明$\left\{x_n\right\}$收敛并求极限.
+    \end{example}
+    \begin{Proof}
+        利用数学归纳法明显得到单调且有界,根据\cref{thm:单调收敛定理}知数列$\left\{x_n\right\}$收敛,两边同时求极限即得$\displaystyle \lim_{n\to\infty}x_n=\frac{1+\sqrt{5}}{2}.$
+    \end{Proof}
+\end{brown}
+\begin{brown}
+    \begin{example}
+        设$0<x_1<1,x_{n+1}=x_n\left(1-x_n\right),n=1,2,3,\cdots.$证明$\left\{x_n\right\}$收敛并求极限.
+    \end{example}
+    \begin{Proof}
+        易知单调减少且有下界,根据\cref{thm:单调收敛定理}知数列$\left\{x_n\right\}$收敛,两边同时求极限即得$\displaystyle \lim_{n\to\infty}x_n=0.$
+
+        同时,根据\cref{thm:Stolz定理}也可求得\begin{align*}
+        \lim_{n\to\infty}nx_n&=\lim_{n\to\infty}\frac{n}{\frac{1}{x_n}}\\
+        &=\lim_{n\to\infty}\frac{1}{\cfrac{1}{x_{n+1}}-\cfrac{1}{x_n}}\\
+        &=\lim_{n\to\infty}\frac{x_nx_{n+1}}{x_n-x_{n+1}}\\
+        &=\lim_{n\to\infty}\frac{x_n^2\left(1-x_n\right)}{x_n^2}\\
+        &=1\qedhere
+        \end{align*}
+    \end{Proof}
+\end{brown}
+\subsection{$\pi$与$\rme$}
+\begin{brown}
+    \begin{example}\label{ex:1}
+        单位圆内接正$n$边形的半周长为\[
+        L_n=n\sin\frac{180^\circ}{n}
+        \]证明数列$\left\{L_n\right\}$收敛.
+    \end{example}
+    \begin{Proof}
+        考虑单调性,令$\displaystyle t=\frac{180^\circ}{n\left(n+1\right)}$,则当$n\geqslant 3$时$nt\leqslant 45^\circ$.则\begin{align*}
+            \tan nt=\frac{
+                \tan\left(n-1\right)t+\tan t
+            }{
+                1-\tan\left(n-1\right)t\tan t
+            }\geqslant\tan\left(n-1\right)t+\tan t\geqslant n\tan t
+        \end{align*}于是\begin{align*}
+            \sin\left(n+1\right)t=\sin nt\cos t+\cos nt\sin t=\sin nt\cos t\left(1+\frac{\tan t}{\tan nt}\right)\leqslant\frac{n+1}{n}\sin nt
+        \end{align*}于是$n\geqslant 3$时\[
+        L_n=n\sin\frac{180^\circ}{n}\leqslant\left(n+1\right)\sin\frac{180^\circ}{n+1}=L_{n+1}
+        \]另一方面,单位圆内接正$n$边形的面积\[
+        S_n=n\sin\frac{180^\circ}{n}\cos\frac{180^\circ}{n}<4
+        \]故当$n\geqslant3$时\[
+        L_n=n\sin\frac{180^\circ}{n}<\frac{4}{\cos\cfrac{180^\circ}{n}}\leqslant\frac{4}{\cos60^\circ}=8
+        \]则由\cref{thm:单调收敛定理}知$\left\{L_n\right\}$收敛.定义\[
+        \lim_{n\to\infty}n\sin\frac{180^\circ}{n}=\pi\qedhere
+        \]
+    \end{Proof}
+    同时,外切正$n$边形的面积\[
+    S'_n=n\tan\frac{180^\circ}{n}
+    \]二者夹逼即可求得单位圆面积$S=\pi$.
+\end{brown}
+\begin{red}
+    \begin{remark}
+        弧度制下,\cref{ex:1}亦作\[
+        \lim_{n\to\infty}\frac{\sin\left(\cfrac{\pi}{n}\right)}{\cfrac{\pi}{n}}=1\Longrightarrow\lim_{x\to0}\frac{\sin x}{x}=1
+        \]后者将是重要的极限之一.
+    \end{remark}
+\end{red}
+\begin{brown}
+    \begin{example}
+        证明$\displaystyle\left\{x_n=\left(1+\frac{1}{n}\right)^n\right\}$单调增加,$\displaystyle\left\{y_n=\left(1+\frac{1}{n}\right)^{n+1}\right\}$单调减少并且二者极限相同.
+    \end{example}
+    \begin{Proof}
+        根据\cref{thm:基本不等式链}可得\[
+        x_n=\left(1+\frac{1}{n}\right)^n\cdot1\leqslant\left[
+            \frac{n\left(1+\frac{1}{n}\right)+1}{n+1}
+        \right]^{n+1}=x_{n+1}
+        \]以及\[
+        \frac{1}{y_n}=\left(\frac{n}{n+1}\right)^{n+1}\cdot1\leqslant\left[
+\frac{
+    \left(n+1\right)\cfrac{n}{n+1}+1
+}{n+2}
+        \right]^{n+2}=\frac{1}{y_{n+1}}
+        \]于是$\left\{x_n\right\}$单调增加,$\left\{y_n\right\}$单调减少.明显$2=x_1\leqslant x_n<y_n\leqslant y_1=4$并且二者显然具有相同的极限,记作\[
+        \rme=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n\qedhere
+        \]
+    \end{Proof}
+\end{brown}
+\begin{brown}
+    \begin{example}\label{ex:2}
+        设$\displaystyle a_n=1+\frac{1}{2^p}+\frac{1}{3^p}+\cdots+\frac{1}{n^p}$,求证：$p>1,\left\{a_n\right\}$收敛；$0,p\leqslant 1,\left\{a_n\right\}$发散.
+    \end{example}
+    \begin{Proof}
+        $p>1$时记$\displaystyle \frac{1}{2^{p-1}}=r\Longrightarrow0<r<1$,于是\begin{align*}
+            &\frac{1}{2^p}+\frac{1}{3^p}<\frac{1}{2^{p-1}}=r\\
+            &\frac{1}{4^p}+\frac{1}{5^p}+\frac{1}{6^p}+\frac{1}{7^p}<\frac{1}{2^{2p-2}}=r^2\\
+            &\cdots\cdots\\
+            &\frac{1}{2^{kp}}+\frac{1}{\left(2^k+1\right)^p}+\cdots+\frac{1}{\left(2^{k+1}-1\right)^p}<r^k
+        \end{align*}于是\[
+        a_n\leqslant a_{2^n-1}<1+r+r^2+\cdots+r^{n-1}<\frac{1}{1-r}
+        \]于是$p>1$时$\left\{x_n\right\}$收敛.
+
+        $p\geqslant 1$时,作\begin{align*}
+            &\frac{1}{2^p}>\frac{1}{2}\\
+            &\frac{1}{3^p}+\frac{1}{4^p}>\frac{1}{2}\\
+            &\frac{1}{5^p}+\frac{1}{6^p}+\frac{1}{7^p}+\frac{1}{8^p}>\frac{1}{2}\\
+            &\cdots\cdots\\
+            &\frac{1}{\left(2^k+1\right)^p}+\frac{1}{\left(2^k+2\right)^p}+\cdots+\frac{1}{\left(2^{k+1}\right)}>\frac{1}{2}
+        \end{align*}于是\[
+        a_{2^n}\geqslant1+\frac{n}{2}
+        \]表明$0<p\leqslant 1$时$\left\{a_{2^n}\right\}$是正无穷大量且数列$\left\{a_n\right\}$单调增加即是正无穷大量.
+    \end{Proof}
+\end{brown}
+\begin{red}
+    \begin{remark}
+        \cref{ex:2}中$p=1$即为调和级数.
+    \end{remark}
+\end{red}
+\begin{brown}
+    \begin{example}
+        证明$\displaystyle\left\{b_n=1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n}-\ln n\right\}$收敛.
+    \end{example}
+    \begin{Proof}
+        因为\[
+        \left(
+            1+\frac{1}{n}
+        \right)^n<\rme<\left(
+            1+\frac{1}{n}
+        \right)^{n+1}
+        \]取对数即\[
+        \frac{1}{n+1}<\ln\frac{n+1}{n}<\frac{1}{n}
+        \]于是\[
+        b_{n+1}-b_n=\frac{1}{n+1}-\ln\frac{n+1}{n}<0
+        \]而\[
+        b_n>\ln\frac{2}{1}+\ln\frac{3}{2}+\cdots+\ln\frac{n+1}{n}-\ln n=\ln\left(n+1\right)-\ln n>0
+        \]即有下界,故$\left\{b_n\right\}$收敛.其极限记作Euler常数\[
+        \gamma=\lim_{n\to\infty}\left(
+            1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n}-\ln n
+        \right)\qedhere
+        \]
+    \end{Proof}
+\end{brown}
+\subsection{闭区间套定理}
+\begin{formal}
+    \begin{definition}[闭区间套的定义]\label{def:闭区间套的定义}
+        若一系列闭区间$\displaystyle\left\{\left[a_n,b_n\right]\right\}$满足：\begin{enumerate}[label={\textup{(\arabic*)}}]
+            \item $\displaystyle\left[a_{n+1},b_{n+1}\right]\subset\left[a_n,b_n\right],n=1,2,3,\cdots$
+            \item $\displaystyle\lim_{n\to\infty}\left(b_n-a_n\right)=0$
+        \end{enumerate}则称为一个闭区间套.
+    \end{definition}
+\end{formal}
+\begin{formal}
+    \begin{theorem}[闭区间套定理]\label{thm:闭区间套定理}
+        如果$\displaystyle\left\{\left[a_n,b_n\right]\right\}$是一个闭区间套,则存在唯一的实数$\xi\in\left[a_n,b_n\right],n=1,2,3,\cdots$且$\displaystyle\lim_{n\to\infty}a_n=\lim_{n\to\infty}b_n=\xi$.
+    \end{theorem}
+    \begin{Proof}
+        因为\[
+        a_1\leqslant a_2\leqslant\cdots\leqslant a_{n-1}\leqslant a_n<b_n\leqslant b_{n-1}\leqslant\cdots\leqslant b_2\leqslant b_1
+        \]即$\left\{a_n\right\},\left\{b_n\right\}$均单调有界即收敛.
+
+        设$\displaystyle\lim_{n\to\infty}a_n=\xi\Longrightarrow\lim_{n\to\infty}b_n=\lim_{n\to\infty}\left(b_n-a_n\right)+\lim_{n\to\infty}a_n=\xi$,其中$\xi$根据\cref{thm:单调收敛定理}即是$\left\{a_n\right\}$作为集合的上确界同时是$\left\{b_n\right\}$作为集合的下确界.于是\[
+        a_n\leqslant \xi\leqslant b_n,n=1,2,3,\cdots
+        \]即$\xi$在所有区间内.另设$\xi'$也满足上述结论,由夹逼准则即得\[\xi'=
+        \lim_{n\to\infty}a_n=\lim_{n\to\infty}b_n=\xi
+        \]保证了唯一性.
+    \end{Proof}
+\end{formal}
+\begin{red}
+    \begin{remark}
+        \cref{thm:闭区间套定理}中若全改为开区间则仍成立\[
+        \lim_{n\to\infty}a_n=\lim_{n\to\infty}b_n=\xi
+        \]但这个$\xi$未必在所有区间内.
+    \end{remark}
+\end{red}
+\begin{formal}
+    \begin{theorem}[实数集不可列]\label{thm:实数集不可列}
+        实数集$\mathbb{R}$是不可列的.
+    \end{theorem}\begin{Proof}
+        考虑反证法,设实数集$\mathbb{R}$可列,即存在某一种排列规则使得\[
+        \mathbb{R}=\left\{
+            x_1,x_2,x_3,\cdots,x_n,\cdots
+        \right\}
+        \]取定区间$x_1\notin\left[a_1,b_1\right]$然后三等分取得\[
+        \left[
+            a_1,\frac{2a_1+b_1}{3}
+        \right],\left[
+            \frac{2a_1+b_1}{3},\frac{a_1+2b_1}{3}
+        \right],\left[
+            \frac{a_1+2b_1}{3},b_1
+        \right]
+        \]其中至少一个不含$x_2$,记作$\left[a_2,b_2\right]$;然后循环该过程即得到了一个闭区间套$\displaystyle\left\{\left[a_n,b_n\right]\right\}$,则根据\cref{thm:闭区间套定理}知存在唯一实数$\xi$属于所有闭区间,矛盾.
+
+        因此,实数集$\mathbb{R}$是不可列的.
+    \end{Proof}
+\end{formal}
+\subsection{子列}
+\begin{formal}
+    \begin{definition}[子列的定义]\label{def:子列的定义}
+        设数列$\left\{x_n\right\}$和一串严格单调增加的正整数\[
+        n_1<n_2<n_3<\cdots<n_k<n_{k+1}<\cdots
+        \]则\[
+        x_{n_1},x_{n_2},x_{n_3},\cdots,x_{n_k},\cdots
+        \]这个数列$\left\{x_{n_k}\right\}$称为$\left\{x_n\right\}$的一个子列.
+    \end{definition}
+\end{formal}
+\begin{red}
+    \begin{remark}
+        \cref{def:子列的定义}中$n_k$下标表示子列的第$k$项是原数列的第$n_k$项.并且一定有\[
+        n_k\geqslant k,k=1,2,3,\cdots
+        \]
+    \end{remark}
+\end{red}
+\begin{formal}
+    \begin{theorem}[子列收敛]\label{thm:子列收敛}
+        设$\left\{x_n\right\}$的一个子列$\left\{x_{n_k}\right\}$,若$\displaystyle\lim_{n\to\infty}x_n=a$,则$\displaystyle\lim_{k\to\infty}x_{n_k}=a$.
+    \end{theorem}
+\end{formal}
+\begin{green}
+    \begin{corollary}[子列极限不同]\label{cor:子列极限不同}
+        若$\left\{x_n\right\}$的两个子列$\left\{x_{n_k}^{\left(1\right)}\right\},\left\{x_{n_k}^{\left(2\right)}\right\}$收敛于不同的极限,则$\left\{x_n\right\}$发散.
+    \end{corollary}
+\end{green}
+\begin{brown}
+    \begin{example}
+        证明数列$\displaystyle\left\{\sin\frac{n\pi}{4}\right\}$发散.
+    \end{example}
+    \begin{Proof}
+        取$n_k^{\left(1\right)}=4k,n_k^{\left(2\right)}=8k+2$即可.
+    \end{Proof}
+\end{brown}
+\subsection{Bolzano-Weierstrass定理}
+\begin{formal}
+    \begin{theorem}[Bolzano-Weierstrass定理]\label{thm:Bolzano-Weierstrass定理}
+        有界数列必有收敛子列.
+    \end{theorem}\begin{Proof}
+        设$\left\{x_n\right\}$有界,设\[
+        a_1\leqslant x_n\leqslant b_1,\forall n=1,2,3,\cdots
+        \]等分为$\displaystyle\left[a_1,\frac{a_1+b_1}{2}\right],\left[\frac{a_1+b_1}{2},b_1\right]$,他们至少之一包含$\left\{x_n\right\}$的无穷多项,记作$\left[a_2,b_2\right]$,如此往复得到一个闭区间套$\left\{\left[a_k,b_k\right]\right\}$,他们都包含$\left\{x_n\right\}$的无穷多项.根据\cref{thm:闭区间套定理}知存在唯一实数$\xi$属于所有闭区间,且\[
+        \lim_{k\to\infty}a_k=\lim_{k\to\infty}b_k=\xi
+        \]按照\cref{def:子列的定义}取$x_{n_i}\in\left[a_i,b_i\right],i=1,2,3,\cdots$构成子列$\left\{x_{n_k}\right\}$并且\[
+        a_k\leqslant x_{n_k}\leqslant b_k,k=1,2,3,\cdots
+        \]夹逼得到\[
+        \lim_{k\to\infty}x_{n_k}=\xi\qedhere
+        \]
+    \end{Proof}
+\end{formal}
+\begin{formal}
+    \begin{theorem}[无界情形]\label{thm:无界情形}
+        类似于\cref{thm:Bolzano-Weierstrass定理},若$\left\{x_n\right\}$无界,则必定存在一个子列$\left\{x_{n_k}\right\}$\[
+        \lim_{k\to\infty}x_{n_k}=\infty
+        \]
+    \end{theorem}
+    \begin{Proof}
+        容易取得子列$\left\{x_{n_k}\right\}$使得\[
+        \left|x_{n_k}\right|>k,k=1,2,3,\cdots\qedhere
+        \]
+    \end{Proof}
+\end{formal}
+\subsection{Cauchy收敛原理}
+\begin{formal}
+    \begin{definition}[基本数列的定义]\label{def:基本数列的定义}
+        若数列$\left\{x_n\right\}$满足：$\forall \varepsilon>0,\exists N\in\mathbb{N}^+,\forall n,m>N\left(n>m>N\right):$\[
+        \left|x_n-x_m\right|<\varepsilon
+        \]则称$\left\{x_n\right\}$为基本数列.
+    \end{definition}
+\end{formal}
+\begin{brown}
+    \begin{example}
+        证明数列$\displaystyle\left\{x_n=1+\frac{1}{2^2}+\frac{1}{3^2}+\cdots+\frac{1}{n^2}\right\}$是一个基本数列.
+    \end{example}
+    \begin{Proof}
+        考虑$m>n$:\begin{align*}
+            x_m-x_n&=\frac{1}{\left(n+1\right)^2}+\frac{1}{\left(n+2\right)^2}+\cdots+\frac{1}{m^2}\\
+            &<\frac{1}{n\left(n+1\right)}+\frac{1}{\left(n+1\right)\left(n+2\right)}+\cdots+\frac{1}{\left(m-1\right)m}\\
+            &=\frac{1}{n}-\frac{1}{m}<\frac{1}{n}\qedhere
+        \end{align*}
+    \end{Proof}
+\end{brown}
+\begin{brown}
+    \begin{example}
+        证明数列$\displaystyle\left\{x_n=1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n}\right\}$不是一个基本数列.
+    \end{example}
+    \begin{Proof}
+        $\forall n\in\mathbb{N}^+:$\[
+        x_{2n}-x_n=\frac{1}{n+1}+\frac{1}{n+2}+\cdots+\frac{1}{2n}>\frac{n}{2n}=\frac{1}{2}\qedhere
+        \]
+    \end{Proof}
+\end{brown}
+\begin{green}
+    \begin{lemma}[基本数列有界]\label{lem:基本数列有界}
+        基本数列必定有界.
+    \end{lemma}
+    \begin{Proof}
+        取$\varepsilon_0=1$则$\exists N_0,\forall n>N_0:$\[
+        \left|
+            x_{N_0}-x_{N_0+1}
+        \right|<1
+        \]令$M=\max\,\left\{
+            \left|x_1\right|,\left|x_2\right|,\cdots,\left|x_{N_0}\right|,1+\left|x_{N_0+1}\right|+1
+        \right\}$于是$\forall n:\left|x_n\right|<M$证毕.
+    \end{Proof}
+\end{green}
+\begin{formal}
+    \begin{theorem}[Cauchy收敛原理/实数系的完备性]\label{thm:Cauchy收敛原理/实数系的完备性}
+        数列$\left\{x_n\right\}$收敛当且仅当$\left\{x_n\right\}$是一个基本数列.
+    \end{theorem}
+    \begin{Proof}
+        先证必要性.设$\left\{x_n\right\}$收敛于$a$,即$\forall\varepsilon>0,\exists N,\forall n,m>N:$\[
+        \left|x_n-a\right|<\frac{\varepsilon}{2},\left|x_m-a\right|<\frac{\varepsilon}{2}
+        \]于是\[
+        \left|x_n-x_m\right|\leqslant\left|x_n-a\right|+\left|x_m-a\right|<\varepsilon
+        \]
+
+        再证充分性.因为$\left\{x_n\right\}$是基本数列,由\cref{lem:基本数列有界}知有界,由\cref{thm:Bolzano-Weierstrass定理}知存在收敛子列$\left\{x_{n_k}\right\}:$\[
+        \lim_{k\to\infty}x_{n_k}=\xi
+        \]又根据基本数列得到$\forall \varepsilon>0,\exists N,\forall n,m>N:$\[
+        \left|
+            x_n-x_m
+        \right|<\frac{\varepsilon}{2}
+        \]取$x_m=x_{n_k}$（其中$k$充分大使得$n_k>N$）,取$k\to\infty$即得\[
+        \left|
+            x_n-\xi
+        \right|\leqslant\frac{\varepsilon}{2}<\varepsilon
+        \]于是该基本数列$\left\{x_n\right\}$必定收敛.
+    \end{Proof}
+\end{formal}
+\begin{green}
+    \begin{corollary}[实数系的完备性]\label{cor:实数系的完备性}
+        实数构成的基本数列必定存在实数极限.
+    \end{corollary}
+\end{green}
+\begin{red}
+    \begin{remark}
+        有理数集$\mathbb{Q}$不具有完备性,例如$\displaystyle\left\{\left(1+\frac{1}{n}\right)^n\right\}$是有理数构成的基本数列,但它的极限$\rme$是无理数（这一证明目前无法做到）.
+    \end{remark}
+\end{red}
+\begin{brown}
+    \begin{example}
+        证明：若数列$\left\{x_n\right\}$满足：\[
+        \left|x_{n+1}-x_n\right|\leqslant\left|
+            x_n-x_{n-1}
+        \right|,0<k<1,n=2,3,\cdots
+        \]则$\left\{x_n\right\}$收敛.
+    \end{example}
+    \begin{Proof}
+        \begin{align*}
+            \left|x_m-x_n\right|&\leqslant\left|x_m-x_{m-1}\right|+\left|x_{m-1}-x_{m-2}\right|+\cdots+\left|x_{n+1}-x_n\right|\\
+            &\leqslant \left(k^{m-2}+k^{m-3}+\cdots+k^{n-1}\right)\left|x_2-x_1\right|\\
+            &<\frac{k^{n-1}}{1-k}\left|x_2-x_1\right|\to0\left(n\to\infty\right)\qedhere
+        \end{align*}
+    \end{Proof}
+\end{brown}
+\subsection{实数系的基本定理}
+\begin{red}
+    \begin{remark}
+        从\cref{thm:确界存在定理/实数系连续性定理}确界存在定理/实数系连续性定理$\Longrightarrow$\cref{thm:单调收敛定理}单调收敛定理$\Longrightarrow$\cref{thm:闭区间套定理}闭区间套定理$\Longrightarrow$\cref{thm:Bolzano-Weierstrass定理}\textup{Bolzano-Weierstrass}定理$\Longrightarrow$\cref{thm:Cauchy收敛原理/实数系的完备性}\textup{Cauchy}收敛原理/实数系的完备性这一推理过程可以看出,实数系的连续性包含了实数系的完备性.
+
+        下面将证明反过来也是成立的.
+    \end{remark}
+\end{red}
+\begin{formal}
+    \begin{theorem}[实数系的连续性与完备性]\label{thm:实数系的连续性与完备性}
+        实数系的完备性等价于实数系的连续性.
+    \end{theorem}
+    \begin{Proof}
+        证明思路即：\cref{thm:Cauchy收敛原理/实数系的完备性}\textup{Cauchy}收敛原理/实数系的完备性$\Longrightarrow$\cref{thm:闭区间套定理}闭区间套定理$\Longrightarrow$\cref{thm:确界存在定理/实数系连续性定理}确界存在定理/实数系连续性定理.
+
+        先证明第一步.设$\left\{\left[a_n,b_n\right]\right\}$是一系列闭区间且满足：\begin{enumerate}[label={\textup{(\arabic*)}}]
+            \item $\left[a_{n+1},b_{n+1}\right]\subset\left[a_n,b_n\right],n=1,2,3,\cdots$
+            \item $\displaystyle\lim_{n\to\infty}\left(b_n-a_n\right)=0$
+        \end{enumerate}设$m>n$即得\[
+        0\leqslant a_m-a_n<b_n-a_n\to0\left(
+            n\to\infty
+        \right)
+        \]所以$\left\{a_n\right\}$是一个基本数列从而其收敛\[
+        \lim_{n\to\infty}a_n=\xi
+        \]那么\[
+        \lim_{n\to\infty}b_n=\lim_{n\to\infty}\left(b_n-a_n\right)+\lim_{n\to\infty}a_n=\xi
+        \]并考虑到$\left\{a_n\right\}$单调增加,$\left\{b_n\right\}$单调减少,于是$\xi$属于所有的闭区间.于是\cref{thm:闭区间套定理}闭区间套定理得证.
+
+        再证第二步.设$S$是非空有上界的实数集合,设$T$为$S$的全体上界集合.取$a_1\notin T,b_1\in T\Longrightarrow a_1<b_1$于是$\displaystyle\left[a_1,\frac{a_1+b_1}{2}\right],\left[\frac{a_1+b_1}{2},b_1\right]$二者中,若$\displaystyle\frac{a_1+b_1}{2}\in T$,取$\displaystyle\left[a_2,b_2\right]=\left[a_1,\frac{a_1+b_1}{2}\right]$;若$\displaystyle\frac{a_1+b_1}{2}\notin T$,取$\displaystyle\left[a_2,b_2\right]=\left[\frac{a_1+b_1}{2},b_1\right]$.总之如此循环得到一个闭区间套$\left\{\left[a_n,b_n\right]\right\}$,其中\[
+        a_n\notin T,b_n\in T,n=1,2,3,\cdots
+        \]下面证明\cref{thm:闭区间套定理}得出的$\xi$是$T$的最小数即$S$的上确界.\begin{enumerate}[label={\textup{(\arabic*)}}]
+            \item 一方面,若$\xi\notin T$,则$\exists x\in S,\xi<x$,于是$n$充分大时$b_n<x$,这与$b_n\in T$矛盾.于是$\xi\in T$.
+            \item 另一方面,若$\exists \eta\in T,\eta<\xi$,于是$n$充分大时$a_n>\eta$,这与$a_n\notin T$矛盾.于是$\xi$是$T$的最小数.
+        \end{enumerate}于是$\xi$是$T$的最小数即$S$的上确界.证毕.
+    \end{Proof}
+\end{formal}
+\begin{red}
+    \begin{remark}
+       至此,我们目前在实数系下得到的\cref{thm:确界存在定理/实数系连续性定理}确界存在定理/实数系连续性定理,\cref{thm:单调收敛定理}单调收敛定理,\cref{thm:闭区间套定理}闭区间套定理,\cref{thm:Bolzano-Weierstrass定理}\textup{Bolzano-Weierstrass}定理,\cref{thm:Cauchy收敛原理/实数系的完备性}\textup{Cauchy}收敛原理/实数系的完备性这五大定理之间都是互相等价的,他们都可以称作实数系的基本定理.
+    \end{remark}
+\end{red}
