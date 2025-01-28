@@ -845,7 +845,11 @@
     \begin{remark}
         \cref{thm:闭区间套定理}中若全改为开区间则仍成立\[
         \lim_{n\to\infty}a_n=\lim_{n\to\infty}b_n=\xi
-        \]但这个$\xi$未必在所有区间内.
+        \]但这个$\xi$未必在所有区间内.若使得\[
+        a_1<a_2<\cdots<a_n<\cdots<b_n<\cdots<b_2<b_1
+        \]则可以保证$\xi$在所有区间内,此时应该叫开区间套定理.
+
+        这个问题的关键在于,逼近点是否在区间内部,例如$\displaystyle\left\{\left(0,\frac{1}{n}\right)\right\}$的逼近点$0$就不在任何一个区间内部.但如果找到一个严格单调递增的左界,一定使得逼近点落在所有区间内部.
     \end{remark}
 \end{red}
 \begin{formal}
